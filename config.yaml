@@ -1,0 +1,33 @@
+# Non-secret configuration. Secrets go in .env (see .env.example), never here.
+# Env vars override this file: nested keys use "__", e.g. LOGGING__LEVEL=DEBUG.
+# Only `logging` is typed in config.py so far; other sections are placeholders
+# and get typed when the code that reads them is written.
+
+logging:
+  level: INFO          # DEBUG | INFO | WARNING | ERROR
+  format: json         # json | console
+  log_payloads: false  # true = log question/prompt text (DEBUG only). Keep false.
+
+models:                # pinned; the judge model must never change silently (§5)
+  generation: TODO
+  embedding: TODO
+  judge: TODO
+
+llm:
+  timeout_s: 30
+  max_attempts: 4
+
+retrieval:
+  k: 5
+
+access:                # draft role model (PROJECT_BRIEF.md); finalised in Phase 1
+  roles:
+    employee: [company, engineering]
+    people_ops: [company, engineering, people_group]
+    finance: [company, engineering, finance]
+    legal: [company, engineering, legal]
+
+paths:
+  raw_data: data/raw
+  chroma: data/chroma
+  embedding_cache: .cache/embeddings

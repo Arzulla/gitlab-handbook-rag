@@ -1,0 +1,57 @@
+[project]
+name = "handbook-rag"
+version = "0.1.0"
+description = "Permission-aware RAG assistant over the GitLab Handbook."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-settings[yaml]>=2.15.0",
+]
+
+[project.scripts]
+handbook-rag = "handbook_rag.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.0",
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # bugbear
+    "UP",  # pyupgrade
+    "SIM", # simplify
+    "RUF", # ruff-specific
+    "T20", # no print() in src/ (CLAUDE.md §6)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/**" = ["T20"]
+"eval/**" = ["T20"]
+"tests/**" = ["T20"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+strict = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not integration'"
+markers = [
+    "integration: hits real external APIs; skipped by default (run with -m integration)",
+]

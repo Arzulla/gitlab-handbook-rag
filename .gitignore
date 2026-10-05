@@ -1,0 +1,28 @@
+# Python / uv
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Tooling caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+
+# Data: raw handbook, Chroma DB, embedding cache (download script is committed instead)
+data/
+.cache/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# NOTE: eval/results/ is committed on purpose: it is the project's evidence.
