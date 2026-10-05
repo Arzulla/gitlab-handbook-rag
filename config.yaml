@@ -20,12 +20,7 @@ llm:
 retrieval:
   k: 5
 
-access:                # draft role model (PROJECT_BRIEF.md); finalised in Phase 1
-  roles:
-    employee: [company, engineering]
-    people_ops: [company, engineering, people_group]
-    finance: [company, engineering, finance]
-    legal: [company, engineering, legal]
+# Access model (sections -> access_group, roles -> groups): config/access.yaml
 
 paths:
   raw_data: data/raw

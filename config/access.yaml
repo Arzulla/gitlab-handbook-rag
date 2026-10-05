@@ -1,0 +1,19 @@
+# Simulated access model on top of the public GitLab Handbook.
+# Chunks store only `access_group`; roles are resolved at query time.
+# Fail closed: a section or role missing here is an error, never "public".
+
+sections:            # handbook dir -> access_group
+  company: public
+  values: public
+  engineering: public   # top-level files only
+  people-group: people
+  people-policies: people
+  total-rewards: people
+  finance: finance
+  legal: legal
+
+roles:               # role -> visible groups
+  employee: [public]
+  people_ops: [public, people]
+  finance: [public, finance]
+  legal: [public, legal]

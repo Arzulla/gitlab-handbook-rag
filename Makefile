@@ -6,10 +6,10 @@ setup:
 	uv sync
 
 data:
-	@echo "make data: not implemented yet (scripts/download_handbook.py)" && exit 1
+	uv run python scripts/download_handbook.py
 
 ingest:
-	@echo "make ingest: not implemented yet (handbook_rag.ingest)" && exit 1
+	uv run python scripts/ingest.py
 
 app:
 	@echo "make app: not implemented yet (handbook_rag.app)" && exit 1
